@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+
+import Content from '../../components/content'
 import { SessionContext } from '../../context/sessionContext';
 
 const Login = (props) => {
@@ -16,10 +18,10 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+    <Content>
       <h2>You need to be logged to see the route: {from.pathname}</h2>
       <button onClick={handleClick}>Login</button>
-    </div>
+    </Content>
   )
 }
 

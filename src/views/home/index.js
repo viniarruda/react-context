@@ -1,13 +1,16 @@
 import React, { useContext } from 'react'
-import { SessionContext } from '../../context/sessionContext';
+import { CartContext } from '../../context/cartContext'
 
 const Home = () => {
-  const [isLoggedIn, logIn] = useContext(SessionContext)
+  const [cart, setProductsInCart] = useContext(CartContext)
 
   return (
-   <div>
-    <h1>logado? {isLoggedIn ? 'TRUE' : 'FALSE'}</h1>
-    <button onClick={() => logIn(false)}>Logout</button>
+   <div>    
+    <div>
+      <button onClick={() => setProductsInCart(cart - 1)}>-</button>
+      <div>Cart have {cart} products</div>
+      <button onClick={() => setProductsInCart(cart + 1)}>+</button>
+    </div>
    </div> 
   )
 }
