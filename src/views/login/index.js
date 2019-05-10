@@ -1,20 +1,24 @@
 import React, { useContext } from 'react'
+import { Redirect, Link } from 'react-router-dom'
 import { SessionContext } from '../../context/sessionContext';
 
 const Login = (props) => {
-  const session = useContext(SessionContext);
+  const { from } = props.location.state || {from: {pathname: "/home"}};
 
+  const [isLoggedIn, logIn] = useContext(SessionContext)
 
-  const handleClick = async () => {
-    const user = 'Vinicius'
-    await session.setUser(user)
-    await session.logIn();
-    console.log(session)
+  async function handleClick() {
+    await logIn(true)
+  }
+
+  if (isLoggedIn) {
+    return <Redirect to={from} />
   }
 
   return (
     <div>
-      <button onClick={() => handleClick()}>Login</button>
+      <h2>You need to be logged to see the route: {from.pathname}</h2>
+      <button onClick={handleClick}>Login</button>
     </div>
   )
 }

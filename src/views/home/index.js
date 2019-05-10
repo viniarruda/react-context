@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { SessionContext } from '../../context/sessionContext';
 
-const Home = () => (
-  <h1>Home</h1>
-)
+const Home = () => {
+  const [isLoggedIn] = useContext(SessionContext)
+
+  return (
+    <h1>logado? {isLoggedIn ? 'TRUE' : 'FALSE'}</h1>
+  )
+}
 
 export default Home

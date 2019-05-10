@@ -1,10 +1,13 @@
 import React from 'react';
-import SessionProvider from './sessionContext'
+import { SessionContext } from './sessionContext'
 
-const AppProvider = () => (
-  <div>
-    <SessionProvider />
-  </div>
-);
+const AppProvider = ({children}) => {
+
+  return (
+    <SessionContext.Provider>
+      {children}
+    </SessionContext.Provider>
+  )
+}
 
 export default AppProvider;
